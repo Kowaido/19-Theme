@@ -97,6 +97,9 @@
     /// </sumary>
     interface IInterface1
     {
+        /// <sumary>
+        /// Не реализованный метод Method1()
+        /// </sumary>
         void Method1();
     }
 }
@@ -107,6 +110,9 @@
     /// </sumary>
     interface IInterface2 : IInterface1
     {
+        /// <sumary>
+        /// Не реализованный метод Method2()
+        /// </sumary>
         void Method2();
     }
 }
@@ -117,6 +123,9 @@
     /// </sumary>
     interface IInterface3 : IInterface2
     {
+        /// <sumary>
+        /// Не реализованный метод Method3()
+        /// </sumary>
         void Method3();
     }
 }
@@ -500,6 +509,82 @@
 }
 
 {
+    /// <summary>
+    /// Интерфейс IPlayable
+    /// </summary>
+    interface IPlayable
+    {
+        /// <summary>
+        /// Не реализованный метод Play()
+        /// </summary>
+        void Play();
+
+        /// <summary>
+        /// Не реализованный метод Pause() 
+        /// </summary>
+        void Pause();
+    }
+}
+
+{
+    /// <summary>
+    /// Интерфейс IRecodable
+    /// </summary>
+    interface IRecodable
+    {
+        /// <summary>
+        /// Не реализованный метод Record()
+        /// </summary>
+        void Record();
+
+        /// <summary>
+        /// Не реализованный метод Stop()
+        /// </summary>
+        void Stop();
+    }
+}
+
+{
+    /// <summary>
+    /// Класс Player наследующийся от интерфейса IPlayable, IRecodable
+    /// </summary>
+    class Player : IPlayable, IRecodable
+    {
+        /// <summary>
+        /// Реализованный метод Play()
+        /// </summary>
+        public void Play()
+        {
+            Console.WriteLine("Плеер играет");
+        }
+
+        /// <summary>
+        /// Реализованный метод Pause()
+        /// </summary>
+        public void Pause()
+        {
+            Console.WriteLine("Плеер на паузе");
+        }
+
+        /// <summary>
+        /// Реализованный метод Record()
+        /// </summary>
+        public void Record()
+        {
+            Console.WriteLine("Запись на плеер началась");
+        }
+
+        /// <summary>
+        /// Реализованный метод Stop()
+        /// </summary>
+        public void Stop()
+        {
+            Console.WriteLine("Запись на плеер остановлена");
+        }
+    }
+}
+
+{
     class Program
     {
         static void Main(string[] args)
@@ -773,7 +858,51 @@
                     obj2.GetSubandDiv(x, y, z);
                     break;
             }
+            //7-Задание
+            
+            Player player = new Player();
+            bool flag = true;
+            int kolv = 0;
+            Console.WriteLine("Вы можете выбрать одно из 4 состояний плеера: \n1-Проиграть, \n2-Пауза \n3-Записать \n4-Остановить");
+            Console.WriteLine("А также вы можете нажав 5-Завершить программу");
+            while (flag)
+            {
+                Console.WriteLine("Введите состояние плеера: ");
+                string choise = Console.ReadLine();
+                switch (choise)
+                {
+                    case "1":
+                        player.Play();
+                        continue;
+
+                    case "2":
+                        player.Pause();
+                        continue;
+
+                    case "3":
+                        player.Record();
+                        continue;
+
+                    case "4":
+                        player.Stop();
+                        continue;
+
+                    case "5":
+                        flag = false;
+                        break;
+
+                    default:
+                        Console.WriteLine("Я не знаю такой команды, попробуй иную");
+                        kolv++;
+                        if(kolv == 4)
+                        {
+                            Console.WriteLine("Попытки превышены");
+                            break;
+                        }
+                        continue;
+            } 
             Console.ReadKey();
+            break;
         }
     }
 }
