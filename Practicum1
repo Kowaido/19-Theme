@@ -24,12 +24,6 @@
         public abstract double Area();
         public abstract double Perimetr();
 
-        public static Figure1 Print1(Figure1 figure1)
-        {
-            Console.WriteLine("Введите название фигуры: ");
-            figure1.Name = Console.ReadLine();
-            return figure1;
-        }
         public virtual void Print()
         {
             Console.WriteLine($"Название фигуры = {Name}");
@@ -246,9 +240,6 @@
                 {
                     case "Прямоугольник":
                     case "прямоугольник":
-                        Figure1 figure = new Rectangle();
-                        figure.Name = name;
-                        name = figure.Name;
                         Console.WriteLine("Ваша фигура была выбрана, теперь вы можете ввести значения: ");
                         flag2 = true;
                         while(flag2)
@@ -261,10 +252,9 @@
                             double side2 = double.Parse(Console.ReadLine());
                             rect.Side2 = side2;
                             side2 = rect.Side2;
+                            rect.Print();
                             rect.Area();
                             rect.Perimetr();
-                            figure.Print();
-                            rect.Print();
                             break;
                         }
                         flag2 = false;
@@ -272,9 +262,6 @@
 
                     case "Квадрат":
                     case "квадрат":
-                        Figure1 figure1 = new Square();
-                        figure1.Name = name;
-                        name = figure1.Name;
                         Console.WriteLine("Ваша фигура была выбрана, теперь вы можете ввести значения: ");
                         flag3 = true;
                         while (flag3)
@@ -295,10 +282,9 @@
                             int side4 = int.Parse(Console.ReadLine());
                             squr.Side4 = side4;
                             side4 = squr.Side4;
+                            rect.Print();
                             rect.Area();
                             rect.Perimetr();
-                            figure1.Print();
-                            rect.Print();
                             break;
                         }
                         flag3 = false;
@@ -306,9 +292,6 @@
 
                     case "треугольник":
                     case "Треугольник":
-                        Figure1 figure2 = new Triagle();
-                        figure2.Name = name;
-                        name = figure2.Name;
                         Console.WriteLine("Ваша фигура выбрана, теперь вы можете ввести значения");
                         flag4 = true;
                         while (flag4)
@@ -325,11 +308,10 @@
                             int side3 = int.Parse(Console.ReadLine());
                             trig.Side3 = side3;
                             side3 = trig.Side3;
+                            trig.Print();
                             trig.Area();
                             trig.Perimetr();
                             trig.GetType();
-                            figure2.Print();
-                            trig.Print();
                             break;
                         }
                         flag4 = false;
@@ -337,9 +319,6 @@
 
                     case "круг":
                     case "Круг":
-                        Figure1 figure3 = new Circle();
-                        figure3.Name = name;
-                        name = figure3.Name;
                         Console.WriteLine("Ваша фигура выбрана, теперь вы можете ввести значения");
                         flag5 = true;
                         while (flag5)
@@ -348,10 +327,9 @@
                             circle.R = int.Parse(Console.ReadLine());
                             Console.Write("Введите значение D: ");
                             circle.D = int.Parse(Console.ReadLine());
+                            circle.Print();
                             circle.Area();
                             circle.Perimetr();
-                            figure3.Print();
-                            circle.Print();
                             break;
                         }
                         Console.ReadKey();
