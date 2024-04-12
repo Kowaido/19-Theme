@@ -55,13 +55,15 @@
     /// <sumary>
     /// Класс MyClass реализующий интерефейс IInterface_new
     /// </sumary>
-    class MyClass : IInterface_new
+    class MyClass : IInterface_New
     {
+
         /// <sumary>
         /// Реализованный метод GetPi()
         /// </sumary>
         public double GetPi()
         {
+            Console.WriteLine($"Число ПИ - {Math.PI}");
             return Math.PI;
         }
 
@@ -70,6 +72,7 @@
         /// </sumary>
         public int GetInteger()
         {
+            Console.WriteLine($"Число целового типа - {25}");
             return 25;
         }
 
@@ -78,6 +81,7 @@
         /// </sumary>
         public double GetSquare(double x)
         {
+            Console.WriteLine($"Возведение в квадрат - {x} * {x} = Число в квадрате: {x}^2 / как {x*x}");
             return x * x;
         }
 
@@ -86,6 +90,7 @@
         /// </sumary>
         public double GetSqurt(int x)
         {
+            Console.WriteLine($"Вычисление квадратного корня - {Math.Sqrt(x)}");
             return Math.Sqrt(x);
         }
     }
