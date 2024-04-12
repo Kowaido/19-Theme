@@ -1,0 +1,365 @@
+{
+    interface Figure
+    {
+        double Area();
+        double Perimetr();
+        void Print();
+    }
+}
+
+{
+    abstract class Figure1 : Figure
+    {
+        public string Name { get; set; }
+        public Figure1()
+        {
+
+        }
+
+        public Figure1(string name)
+        {
+            Name = name;
+        }
+
+        public abstract double Area();
+        public abstract double Perimetr();
+
+        public static Figure1 Print1(Figure1 figure1)
+        {
+            Console.WriteLine("Введите название фигуры: ");
+            figure1.Name = Console.ReadLine();
+            return figure1;
+        }
+        public virtual void Print()
+        {
+            Console.WriteLine($"Название фигуры = {Name}");
+        }
+    }
+}
+
+{
+    class Rectangle : Figure1
+    {
+        public double Side1 { get; set; }
+        public double Side2 { get; set; }
+        public Rectangle()
+        {
+
+        }
+
+        public Rectangle(string name, double side1, double side2)
+            :base(name)
+        {
+            Side1 = side1;
+            Side2 = side2;
+        }
+
+        public override double Area()
+        {
+            return Side1 * Side2;
+        }
+
+        public override double Perimetr()
+        {
+            return 2 * (Side1 * Side2);
+        }
+
+        public override void Print()
+        {
+            base.Print();
+            Console.WriteLine($"Стороны: {Side1}, {Side2}");
+        }
+    }
+}
+
+{
+    class Square : Figure1
+    {
+        public int Side1 { get; set; }
+        public int Side2 { get; set; }
+        public int Side3 { get; set; }
+        public int Side4 { get; set; }
+
+        public Square()
+        {
+
+        }
+
+        public Square(string name, int side1, int side2, int side3, int side4)
+            :base(name)
+        {
+            Side1 = side1;
+            Side2 = side2;
+            Side3 = side3;
+            Side4 = side4;
+        }
+
+        public override double Area()
+        {
+            return (Side2 * Side4);
+        }
+
+        public override double Perimetr()
+        {
+            return Side1 * 4;
+        }
+
+        public override void Print()
+        {
+            base.Print();
+            Console.WriteLine($"Стороны: {Side1}, {Side2}, {Side3}, {Side4}");
+            if(Side1 != Side2 || Side2 != Side3 || Side3 != Side4 || Side1 != Side3 || Side2 != Side4 || Side1 != Side4 || Side2 != Side1 || Side3 != Side2 || Side3 != Side1 || Side3 != Side4 || Side4 != Side1 || Side4 != Side2 || Side4 != Side3)
+            {
+                Console.WriteLine("Одна из сторон квадарата не правильная, мы не можем из этого собрать квадрат целый квадрат");
+            }
+        }
+    }
+}
+
+{
+    class Triagle : Figure1
+    {
+        public int Side1 { get; set; }
+        public int Side2 { get; set;}
+        public int Side3 { get; set; }
+
+        public Triagle()
+        {
+
+        }
+        public Triagle(string name, int side1, int side2, int side3)
+          :base(name)
+        {
+            if(side1<(side2+side3)||side2<(side1+side3))
+            {
+                Side1 = side1;
+                Side2 = side2;
+                Side3 = side3;
+            }
+
+            else if(side1>(side2-side3)||side2>(side1-side3))
+            {
+                Console.WriteLine("Не возможно достигнуть подобного");
+            }
+        }
+
+        public override double Area()
+        {
+            double p = (Side1 + Side2 + Side3) / 2.0;
+            return Math.Sqrt(p * (p - Side1) * (p - Side2) * (p - Side3));
+        }
+
+        public override double Perimetr()
+        {
+            return Side1 + Side2 + Side3;
+        }
+
+        public new void GetType()
+        {
+            if (Side1 == Side3 || Side1 == Side2 || Side2 == Side1 || Side2 == Side3 || Side3 == Side1 || Side3 == Side2)
+            {
+                Console.WriteLine("равносторонний");
+            }
+
+            else if(Side1 == Side2 || Side1 == Side3)
+            {
+                Console.WriteLine("равнобедренный");
+            }
+
+            else
+            {
+                Console.WriteLine("Не правильный треугольник");
+            }
+        }
+
+        public override void Print()
+        {
+            base.Print();
+            GetType();
+            Console.WriteLine($"Строны: {Side1}, {Side2}, {Side3}");
+        }
+    }
+}
+
+{
+    class Circle : Figure1
+    {
+        public double C { get; set; }
+        public double D { get; set; }
+        public double R { get; set; }
+        public Circle()
+        {
+
+        }
+
+        public Circle(string name, double c, double d, double r)
+          :base(name)
+        {
+            C = c;
+            D = d;
+            R = r;
+        }
+
+        public override double Area()
+        {
+            return C = Math.PI * D;
+        }
+
+        public override double Perimetr()
+        {
+            return C = 2 * Math.PI * R;
+        }
+
+        public override void Print()
+        {
+            base.Print();
+            Console.WriteLine($"Радиус - {R}");
+            Console.WriteLine($"Окружность - {Area()}, Периметр - {Perimetr()}");
+        }
+    }
+}
+
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            Rectangle rect = new Rectangle();
+            Square squr = new Square();
+            Triagle trig = new Triagle();
+            Circle circle = new Circle();
+            List<Figure1> figure1s = new List<Figure1>();
+            figure1s.Add(rect);
+            figure1s.Add(squr);
+            figure1s.Add(trig);
+            figure1s.Add(circle);
+            bool flag1 = true;
+            bool flag2 = false;
+            bool flag3 = false;
+            bool flag4 = false;
+            bool flag5 = false;
+            while(flag1)
+            {
+                Console.WriteLine("Введите название фигуры: ");
+                string name = Console.ReadLine();
+                switch (name)
+                {
+                    case "Прямоугольник":
+                    case "прямоугольник":
+                        Figure1 figure = new Rectangle();
+                        figure.Name = name;
+                        name = figure.Name;
+                        Console.WriteLine("Ваша фигура была выбрана, теперь вы можете ввести значения: ");
+                        flag2 = true;
+                        while(flag2)
+                        {
+                            Console.Write("Введите значение первой стороны: ");
+                            double side1 = double.Parse(Console.ReadLine());
+                            rect.Side1 = side1;
+                            side1 = rect.Side1;
+                            Console.Write("Введите значения второй стороны: ");
+                            double side2 = double.Parse(Console.ReadLine());
+                            rect.Side2 = side2;
+                            side2 = rect.Side2;
+                            rect.Area();
+                            rect.Perimetr();
+                            figure.Print();
+                            rect.Print();
+                            break;
+                        }
+                        flag2 = false;
+                        break;
+
+                    case "Квадрат":
+                    case "квадрат":
+                        Figure1 figure1 = new Square();
+                        figure1.Name = name;
+                        name = figure1.Name;
+                        Console.WriteLine("Ваша фигура была выбрана, теперь вы можете ввести значения: ");
+                        flag3 = true;
+                        while (flag3)
+                        {
+                            Console.Write("Введите значение первой стороны: ");
+                            int side1 = int.Parse(Console.ReadLine());
+                            squr.Side1 = side1;
+                            side1 = squr.Side1;
+                            Console.Write("Введите значение второй стороны: ");
+                            int side2 = int.Parse(Console.ReadLine());
+                            squr.Side2 = side2;
+                            side2 = squr.Side2;
+                            Console.Write("Введите значение третей стороны: ");
+                            int side3 = int.Parse(Console.ReadLine());
+                            squr.Side3 = side3;
+                            side3 = squr.Side3;
+                            Console.Write("Введите значение четвёртой стороны: ");
+                            int side4 = int.Parse(Console.ReadLine());
+                            squr.Side4 = side4;
+                            side4 = squr.Side4;
+                            rect.Area();
+                            rect.Perimetr();
+                            figure1.Print();
+                            rect.Print();
+                            break;
+                        }
+                        flag3 = false;
+                        break;
+
+                    case "треугольник":
+                    case "Треугольник":
+                        Figure1 figure2 = new Triagle();
+                        figure2.Name = name;
+                        name = figure2.Name;
+                        Console.WriteLine("Ваша фигура выбрана, теперь вы можете ввести значения");
+                        flag4 = true;
+                        while (flag4)
+                        {
+                            Console.Write("Введите значение первой стороны: ");
+                            int side1 = int.Parse(Console.ReadLine());
+                            trig.Side1 = side1;
+                            side1 = trig.Side1;
+                            Console.Write("Введите значение второй стороны: ");
+                            int side2 = int.Parse(Console.ReadLine());
+                            trig.Side2 = side2;
+                            side2 = trig.Side2;
+                            Console.Write("Введите значение третей стороны:");
+                            int side3 = int.Parse(Console.ReadLine());
+                            trig.Side3 = side3;
+                            side3 = trig.Side3;
+                            trig.Area();
+                            trig.Perimetr();
+                            trig.GetType();
+                            figure2.Print();
+                            trig.Print();
+                            break;
+                        }
+                        flag4 = false;
+                        break;
+
+                    case "круг":
+                    case "Круг":
+                        Figure1 figure3 = new Circle();
+                        figure3.Name = name;
+                        name = figure3.Name;
+                        Console.WriteLine("Ваша фигура выбрана, теперь вы можете ввести значения");
+                        flag5 = true;
+                        while (flag5)
+                        {
+                            Console.Write("Введите Радиус: ");
+                            circle.R = int.Parse(Console.ReadLine());
+                            Console.Write("Введите значение D: ");
+                            circle.D = int.Parse(Console.ReadLine());
+                            circle.Area();
+                            circle.Perimetr();
+                            figure3.Print();
+                            circle.Print();
+                            break;
+                        }
+                        Console.ReadKey();
+                        flag3 = false;
+                        flag1 = false;
+                        break;
+                }
+            }
+        }
+    }
+}
