@@ -1,13 +1,24 @@
 {
+    /// <sumary>
+    ///Интерфейс IInterface
+    /// </sumary>
     interface IInterface
     {
+        /// <sumary>
+        /// Не реализованый метод Method()
         void Method();
     }
 }
 
 {
+    /// <sumary>
+    /// Класс DerivedClass реализующий интерефейс IInterface
+    /// </sumary>
     class DerivedClass : IInterface
     {
+        /// <sumary>
+        /// Реализованный метод Method()
+        /// </sumary>
         public void Method()
         {
             Console.WriteLine("Метод, реализованный в классе DerivedClass");
@@ -16,33 +27,63 @@
 }
 
 {
+    /// <sumary>
+    /// Интерфейс IInterface_new 
+    /// </sumary>
     interface IInterface_new
     {
+        /// <sumary>
+        /// Не реализованный метод GetPi()
+        /// </sumary>
         double GetPi();
+        /// <sumary>
+        /// Не реализованный метод GetInteger()
+        /// </sumary>
         int GetInteger();
+        /// <sumary>
+        /// Не реализованный метод GetSquare()
+        /// </sumary>
         double GetSquare(double x);
+        /// <sumary>
+        /// Не реализованный метод GetSqurt()
+        /// </sumary>
         double GetSqurt(int x);
     }
 }
 
 {
+    /// <sumary>
+    /// Класс MyClass реализующий интерефейс IInterface_new
+    /// </sumary>
     class MyClass : IInterface_new
     {
+        /// <sumary>
+        /// Реализованный метод GetPi()
+        /// </sumary>
         public double GetPi()
         {
             return Math.PI;
         }
 
+        /// <sumary>
+        /// Реализованный метод GetInteger()
+        /// </sumary>
         public int GetInteger()
         {
             return 25;
         }
 
+        /// <sumary>
+        /// Реализованный метод GetSquare()
+        /// </sumary>
         public double GetSquare(double x)
         {
             return x * x;
         }
 
+        /// <sumary>
+        /// Реализованный метод GetSqurt()
+        /// </sumary>
         public double GetSqurt(int x)
         {
             return Math.Sqrt(x);
@@ -51,6 +92,9 @@
 }
 
 {
+    /// <sumary>
+    /// Интерфейс IInterface1 
+    /// </sumary>
     interface IInterface1
     {
         void Method1();
@@ -58,6 +102,9 @@
 }
 
 {
+    /// <sumary>
+    /// Интерфейс IInterface2 наследующийся от интерфейса IInterface1
+    /// </sumary>
     interface IInterface2 : IInterface1
     {
         void Method2();
@@ -65,6 +112,9 @@
 }
 
 {
+    /// <sumary>
+    /// Интерфейс IInterface3 наследующийся от интерфейса IInterface2  
+    /// </sumary>
     interface IInterface3 : IInterface2
     {
         void Method3();
@@ -72,18 +122,30 @@
 }
 
 {
+    /// <sumary>
+    /// Класс DerivedClass1 реализующий интерефейс IInterface3
+    /// </sumary>
     class DerivedClass1 : IInterface3
     {
+        /// <sumary>
+        /// Реализованный метод Method1()
+        /// </sumary>
         public void Method1()
         {
             Console.WriteLine("реализован Method1");
         }
 
+        /// <sumary>
+        /// Реализованный метод Method2()
+        /// </sumary>
         public void Method2()
         {
             Console.WriteLine("реализован Method2");
         }
 
+        /// <sumary>
+        /// Реализованный метод Method3()
+        /// </sumary>
         public void Method3()
         {
             Console.WriteLine("реализован Method3");
@@ -92,17 +154,348 @@
 }
 
 {
+    /// <summary>
+    /// Интерфейс IThounghts
+    /// </summary>
     interface IThounghts
     {
-        void Thoungths();
+
+        /// <summary>
+        /// Не реализованный метод для вывода мыслей Show()
+        /// </summary>
+        void Show();
     }
 }
 
 {
+    /// <summary>
+    /// Интерейс ITalking
+    /// </summary>
     interface ITalking
     {
+        /// <summary>
+        /// Не реализованный метод для вывода разговора ShowTalk1()
+        /// </summary>
         void ShowTalk1();
+
+        /// <summary>
+        /// Не реализованный метод для вывода разговора ShowTalk2()
+        /// </summary>
         void ShowTalk2();
+    }
+}
+
+{
+    /// <summary>
+    /// Класс Person наследующий от двух не связанных интерфейсов ITalking, IThounghts
+    /// </summary>
+    class Person : ITalking, IThounghts
+    {
+        /// <summary>
+        /// Реализованный метод для вывода разговора ShowTalk1()
+        /// </summary>
+        public void ShowTalk1()
+        {
+            Console.WriteLine("Говорит громко - Я люблю программирование!");
+        }
+
+        /// <summary>
+        /// Реализованный метод для вывода мыслей Show()
+        /// </summary>
+        public void Show()
+        {
+            Console.WriteLine("Думает - А C# больше всего");
+        }
+        
+        /// <summary>
+        /// Реализованный метод для вывода разговора ShowTalk2()
+        /// </summary>
+        public void ShowTalk2()
+        {
+            Console.WriteLine("Говорит нормально - Меньше люблю компьютерные игры");
+        }
+    }
+}
+
+{
+    /// <summary>
+    /// Интерфейс ISwitchtavle
+    /// </summary>
+    interface ISwitchtable
+    {
+        /// <sumary>
+        /// Не реализованный метод On()
+        /// </sumary>
+        void On();
+        /// <sumary>
+        /// Не реализованный метод Off()
+        /// </sumary>
+        void Off();
+    }
+}
+
+{
+    class TvSet : ISwitchtable
+    {
+        /// <sumary>
+        /// Реализованный метод On()
+        /// </sumary>
+        public void On()
+        {
+            Console.WriteLine("Теливизор включён");
+        }
+
+        /// <sumary>
+        /// Реализованный метод Off()
+        /// </sumary>
+        public void Off()
+        {
+            Console.WriteLine("Теливизор выключен");
+        }
+    }
+}
+
+{
+    /// <sumary>
+    /// Класс PersonalComputer реализующий интерфейс ISwhitchtable
+    /// </sumary>
+    class PersonalComputer : ISwitchtable
+    {
+        /// <sumary>
+        /// Реализованный метод On()
+        /// </sumary>
+        public void On()
+        {
+            Console.WriteLine("Компьютер включён");
+        }
+
+        /// <sumary>
+        /// Реализованный метод Off()
+        /// </sumary>
+        public void Off()
+        {
+            Console.WriteLine("Компьютер выключен");
+        }
+    }
+}
+
+{
+    /// <sumary>
+    /// Интерфейс IArifmetic
+    /// </sumary>
+    interface IArifmetic
+    {    
+        /// <sumary>
+        /// не реализованный метод GetPlus()
+        /// </sumary>
+        double GetPlus(double x, double y);
+
+        /// <sumary>
+        /// не реализованный метод GetPlus()
+        /// </sumary>
+        double GetSub(double x, double y);
+
+        /// <sumary>
+        /// не реализованный метод GetPlus()
+        /// </sumary>
+        double GetMul(double x, double y);
+
+        /// <sumary>
+        /// не реализованный метод GetPlus()
+        /// </sumary>
+        double GetDiv(double x, double y);
+    }
+}
+
+{
+    /// <sumary>
+    /// Интерфейс IMathSqutrandOutSqurt
+    /// </sumary>
+    interface IMathSqurtandOutSqurt
+    {
+        /// <sumary>
+        /// не реализованный метод GetPlusandSub()
+        /// </sumary>
+        double GetPlusandSub(double x, double y, double z);
+        /// <sumary>
+        /// не реализованный метод GetMulandDiv()
+        /// </sumary>
+        double GetMulandDiv(double x, double y, double z);
+        /// <sumary>
+        /// не реализованный метод GetPlusandMul()
+        /// </sumary>
+        double GetPlusandMul(double x, double y, double z);
+        /// <sumary>
+        /// не реализованный метод GetSubandDiv()
+        /// </sumary>
+        double GetSubandDiv(double x, double y, double z);
+        /// <sumary>
+        /// не реализованный метод GetSqurt()
+        /// </sumary>
+        double GetSqurt(double x);
+        /// <sumary>
+        /// не реализованный метод GetOutSqurt()
+        /// </sumary>
+        double GetOutSqurt(double x);
+    }
+}
+
+{
+    /// <summary>
+    /// Класс A наследующийся IArifmetic
+    /// </summary>
+    class A : IArifmetic
+    {
+        /// <summary>
+        /// Реализованый метод для сложения
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <returns></returns>
+        public virtual double GetPlus(double x, double y)
+        {
+            return x + y;
+        }
+
+        /// <summary>
+        /// Реализованный метод для вычитания
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <returns></returns>
+        public virtual double GetSub(double x, double y)
+        {
+            return x - y;
+        }
+
+        /// <summary>
+        /// Реализованный метод для умножения
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <returns></returns>
+        public virtual double GetMul(double x, double y)
+        {
+            return x * y;
+        }
+
+        /// <summary>
+        /// Реализованный метод для деления
+        /// </summary>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <returns></returns>
+        public virtual double GetDiv(double x, double y)
+        {
+            return x / y;
+        }
+    }
+}
+
+{
+    /// <sumary>
+    /// Класс Aa наследующийся от класса, не реазлизующий интерфейс
+    /// </sumary>
+    class Aa : A
+    {
+        /// <sumary>
+        /// Переопределённый метод GetPlus()
+        /// </sumary>
+        public override double GetPlus(double x, double y)
+        {
+            Console.WriteLine($"{x} + {y} = {x + y}");
+            return base.GetPlus(x,y);
+        }
+
+
+        /// <sumary>
+        /// Переопределённый метод GetSub()
+        /// </sumary>
+        public override double GetSub(double x, double y)
+        {
+            Console.WriteLine($"{x} - {y} = {x - y}");
+            return base.GetSub(x,y);
+        }
+
+        /// <sumary>
+        /// Переопределённый метод GetMul()
+        /// </sumary>
+        public override double GetMul(double x, double y)
+        {
+            Console.WriteLine($"{x} * {y} = {x * y}");
+            return base.GetMul(x,y);
+        }
+
+        /// <sumary>
+        /// Переопределённый метод GetDiv()
+        /// </sumary>
+        public override double GetDiv(double x, double y)
+        {
+            Console.WriteLine($"{x} / {y} = {x / y}");
+            return base.GetDiv(x,y);
+        }
+    }
+}
+
+{
+    /// <sumary>
+    /// Класс Ab наследующийся от базового класса и реализующий интерфейс IMathSqurtandOutSqurt
+    /// </sumary>
+    class Ab : A, IMathSqurtandOutSqurt
+    {
+        /// <sumary>
+        /// Реализованный метод GetPlusandSub()
+        /// </sumary>
+        public double GetPlusandSub(double x, double y, double z)
+        {
+            Console.WriteLine($"{x} + {y} - {z} = {x + y - z} \n({x} + {y}) - {z} = {(x + y) - z}");
+            return x + y - z;
+        }
+
+        /// <sumary>
+        /// Реализованный метод GetMulandDiv()
+        /// </sumary>
+        public double GetMulandDiv(double x, double y, double z)
+        {
+            Console.WriteLine($"{x} * {y} / {z} = {x * y / z} \n({x} * {y}) / {z} = {(x * y) / z}");
+            return x * y / z;
+        }
+
+        /// <sumary>
+        /// Реализованный метод GetPlusandMul()
+        /// </sumary>
+        public double GetPlusandMul(double x, double y, double z)
+        {
+            Console.WriteLine($"{x} + {y} * {z} = {x + y * z} \n({x} + {y}) * {z} = {(x + y) * z}");
+            return x + y * z;
+        }
+
+        /// <sumary>
+        /// Реализованный метод GetSubandDiv()
+        /// </sumary>
+        public double GetSubandDiv(double x, double y, double z)
+        {
+            Console.WriteLine($"{x} - {y} / {z} = {x - y / z} \n({x} - {y}) / {z} = {(x - y) / z}");
+            return x - y / z;
+        }
+
+        /// <sumary>
+        /// Реализованный метод GetSqurt()
+        /// </sumary>
+        public double GetSqurt(double x)
+        {
+            Console.WriteLine($"{x} * {x} = {x*x}^2");
+            return x * x;
+        }
+
+        /// <sumary>
+        /// Реализованный метод GetOutSqurt()
+        /// </sumary>
+        public double GetOutSqurt(double x)
+        {
+            Console.WriteLine($"Квадратный корень - {x} = {Math.Sqrt(x)}");
+            return Math.Sqrt(x);
+        }
     }
 }
 
@@ -129,10 +522,257 @@
             dClass.Method3();
             //4-Задание
             Person person = new Person();
-            Person1 person1 = new Person1();
-            person1.ShowTalk1();
+            person.ShowTalk1();
             person.Thoungths();
-            person1.ShowTalk2();
+            person.ShowTalk2();
+            Console.ReadKey();
+            //5-Задание
+            TvSet tvS = new TvSet();
+            PersonalComputer pc = new PersonalComputer();
+            List<ISwitchtable> devices = new List<ISwitchtable>();
+            devices.Add(tvS);
+            devices.Add(pc);
+            bool flag = true;
+
+            //1-способ
+            foreach (var device in devices)
+            {
+                device.On();
+                device.Off();
+            }
+
+            //2-способ
+            while (flag)
+            {
+                Console.WriteLine("Введите Телевизор или Компьютер: ");
+                string choise = Console.ReadLine();
+                switch (choise)
+                {
+                    case "Телевизор":
+                    case "телевизор":
+                        Console.WriteLine($"Вы выбрали {choise}");
+                        Console.WriteLine("Выберите что вы хотите сделать?");
+                        Console.WriteLine("\n1-Включить \n2-Выключить \n3-Завершить программу");
+                        choise = Console.ReadLine();
+                        switch (choise)
+                        {
+                            case "1":
+                                tvS.On();
+                                continue;
+
+                            case "2":
+                                tvS.Off();
+                                continue;
+
+                            case "3":
+                                flag = false;
+                                break;
+                        }
+                        break;
+
+                    case "Компьютер":
+                    case "компьютер":
+                        Console.WriteLine($"Вы выбрали {choise}");
+                        Console.WriteLine("Выберите что вы хотите сделать?");
+                        Console.WriteLine("\n1-Включить \n2-Выключить \n3-Завершить программу");
+                        choise = Console.ReadLine();
+                        switch (choise)
+                        {
+                            case "1":
+                                pc.On();
+                                continue;
+
+                            case "2":
+                                pc.Off();
+                                continue;
+
+                            case "3":
+                                flag = false;
+                                break;
+                        }
+                        break;
+                }
+                flag = false;
+            //6-Задание
+            Aa obj1 = new Aa();
+            Ab obj2 = new Ab();
+            List<A> arifmath = new List<A>();
+            arifmath.Add(obj1);
+            arifmath.Add(obj2);
+            Console.WriteLine("Введите операцию которую хотите произвести: ");
+            Console.WriteLine("1-Сложение и Умножение \n2-Вычитание и Деление \n3-Возвести в квадрат и извлечение квадтратного корня \n4-Сложение и вычитание \n5-Умножение и деление \n6-Сложение с вычитанием \n7-Умножение с делением \n8-Сложение с умножением \n9-Вычитание с делением");
+            string choise = Console.ReadLine();
+            switch(choise)
+            {
+                case "1":
+                    Console.Write("Введите первое число: ");
+                    double x = double.Parse(Console.ReadLine());
+                    Console.Write("Введите второе число: ");
+                    double y = double.Parse(Console.ReadLine());
+                    obj1.GetPlus(x, y);
+                    Console.WriteLine("Хотите ли поменять значения: ");
+                    choise = Console.ReadLine();
+                    if(choise == "Да" || choise == "да")
+                    {
+                        Console.WriteLine("Отлично, введите по новой значения");
+                        x = 0;
+                        y = 0;
+                        Console.WriteLine("Введите первое число: ");
+                        x = double.Parse(Console.ReadLine());
+                        Console.WriteLine("Введите второе число: ");
+                        y = double.Parse(Console.ReadLine());
+                    }
+
+                    else if(choise == "Нет" || choise == "нет")
+                    {
+                        Console.WriteLine("Ваши значения остались прежними");
+                    }
+
+                    obj1.GetMul(x, y);
+                    break;
+
+                case "2":
+                    Console.WriteLine("Obj2: ");
+                    Console.Write("Введите первое число: ");
+                    x = double.Parse(Console.ReadLine());
+                    Console.Write("Введите второе число: ");
+                    y = double.Parse(Console.ReadLine());
+                    obj1.GetSub(x, y);
+                    Console.WriteLine("Хотите ли поменять значения: ");
+                    choise = Console.ReadLine();
+                    if (choise == "Да" || choise == "да")
+                    {
+                        Console.WriteLine("Отлично, введите по новой значения");
+                        x = 0;
+                        y = 0;
+                        Console.WriteLine("Введите первое число: ");
+                        x = double.Parse(Console.ReadLine());
+                        Console.WriteLine("Введите второе число: ");
+                        y = double.Parse(Console.ReadLine());
+                    }
+
+                    else if (choise == "Нет" || choise == "нет")
+                    {
+                        Console.WriteLine("Ваши значения остались прежними");
+                    }
+
+                    obj1.GetDiv(x, y);
+                    break;
+
+                case "3":
+                    Console.WriteLine("Obj3: ");
+                    Console.Write("Введите число: ");
+                    x = double.Parse(Console.ReadLine());
+                    obj2.GetSqurt(x);
+                    Console.WriteLine("Хотите ли поменять значение: ");
+                    choise = Console.ReadLine();
+                    if (choise == "Да" || choise == "да")
+                    {
+                        Console.WriteLine("Отлично, введите по новой значение");
+                        x = 0;
+                        Console.WriteLine("Введите число: ");
+                        x = double.Parse(Console.ReadLine());
+                    }
+
+                    else if (choise == "Нет" || choise == "нет")
+                    {
+                        Console.WriteLine("Ваши значения остались прежними");
+                    }
+                    obj2.GetOutSqurt(x);
+                    break;
+
+                case "4":
+                    Console.Write("Введите первое число: ");
+                    x = double.Parse(Console.ReadLine());
+                    Console.Write("Введите второе число: ");
+                    y = double.Parse(Console.ReadLine());
+                    obj1.GetPlus(x, y);
+                    Console.WriteLine("Хотите ли поменять значения: ");
+                    choise = Console.ReadLine();
+                    if (choise == "Да" || choise == "да")
+                    {
+                        Console.WriteLine("Отлично, введите по новой значения");
+                        x = 0;
+                        y = 0;
+                        Console.WriteLine("Введите первое число: ");
+                        x = double.Parse(Console.ReadLine());
+                        Console.WriteLine("Введите второе число: ");
+                        y = double.Parse(Console.ReadLine());
+                    }
+
+                    else if (choise == "Нет" || choise == "нет")
+                    {
+                        Console.WriteLine("Ваши значения остались прежними");
+                    }
+                    obj1.GetSub(x, y);
+                    break;
+
+                case "5":
+                    Console.Write("Введите первое число: ");
+                    x = double.Parse(Console.ReadLine());
+                    Console.Write("Введите второе число: ");
+                    y = double.Parse(Console.ReadLine());
+                    obj1.GetMul(x, y);
+                    Console.WriteLine("Хотите ли поменять значения: ");
+                    choise = Console.ReadLine();
+                    if (choise == "Да" || choise == "да")
+                    {
+                        Console.WriteLine("Отлично, введите по новой значения");
+                        x = 0;
+                        y = 0;
+                        Console.WriteLine("Введите первое число: ");
+                        x = double.Parse(Console.ReadLine());
+                        Console.WriteLine("Введите второе число: ");
+                        y = double.Parse(Console.ReadLine());
+                    }
+
+                    else if (choise == "Нет" || choise == "нет")
+                    {
+                        Console.WriteLine("Ваши значения остались прежними");
+                    }
+                    obj1.GetDiv(x, y);
+                    break;
+
+                case "6":
+                    Console.Write("Введите первое число: ");
+                    x = double.Parse(Console.ReadLine());
+                    Console.Write("Введите второе число: ");
+                    y = double.Parse(Console.ReadLine());
+                    Console.Write("Введите третие число: ");
+                    double z = double.Parse(Console.ReadLine());
+                    obj2.GetPlusandSub(x, y, z);
+                    break;
+
+                case "7":
+                    Console.Write("Введите первое число: ");
+                    x = double.Parse(Console.ReadLine());
+                    Console.Write("Введите второе число: ");
+                    y = double.Parse(Console.ReadLine());
+                    Console.Write("Введите третие число: ");
+                    z = double.Parse(Console.ReadLine());
+                    obj2.GetMulandDiv(x, y, z);
+                    break;
+
+                case "8":
+                    Console.Write("Введите первое число: ");
+                    x = double.Parse(Console.ReadLine());
+                    Console.Write("Введите второе число: ");
+                    y = double.Parse(Console.ReadLine());
+                    Console.Write("Введите третие число: ");
+                    z = double.Parse(Console.ReadLine());
+                    obj2.GetPlusandMul(x, y, z);
+                    break;
+
+                case "9":
+                    Console.Write("Введите первое число: ");
+                    x = double.Parse(Console.ReadLine());
+                    Console.Write("Введите второе число: ");
+                    y = double.Parse(Console.ReadLine());
+                    Console.Write("Введите третие число: ");
+                    z = double.Parse(Console.ReadLine());
+                    obj2.GetSubandDiv(x, y, z);
+                    break;
+            }
             Console.ReadKey();
         }
     }
