@@ -1,0 +1,139 @@
+{
+    interface IInterface
+    {
+        void Method();
+    }
+}
+
+{
+    class DerivedClass : IInterface
+    {
+        public void Method()
+        {
+            Console.WriteLine("Метод, реализованный в классе DerivedClass");
+        }
+    }
+}
+
+{
+    interface IInterface_new
+    {
+        double GetPi();
+        int GetInteger();
+        double GetSquare(double x);
+        double GetSqurt(int x);
+    }
+}
+
+{
+    class MyClass : IInterface_new
+    {
+        public double GetPi()
+        {
+            return Math.PI;
+        }
+
+        public int GetInteger()
+        {
+            return 25;
+        }
+
+        public double GetSquare(double x)
+        {
+            return x * x;
+        }
+
+        public double GetSqurt(int x)
+        {
+            return Math.Sqrt(x);
+        }
+    }
+}
+
+{
+    interface IInterface1
+    {
+        void Method1();
+    }
+}
+
+{
+    interface IInterface2 : IInterface1
+    {
+        void Method2();
+    }
+}
+
+{
+    interface IInterface3 : IInterface2
+    {
+        void Method3();
+    }
+}
+
+{
+    class DerivedClass1 : IInterface3
+    {
+        public void Method1()
+        {
+            Console.WriteLine("реализован Method1");
+        }
+
+        public void Method2()
+        {
+            Console.WriteLine("реализован Method2");
+        }
+
+        public void Method3()
+        {
+            Console.WriteLine("реализован Method3");
+        }
+    }
+}
+
+{
+    interface IThounghts
+    {
+        void Thoungths();
+    }
+}
+
+{
+    interface ITalking
+    {
+        void ShowTalk1();
+        void ShowTalk2();
+    }
+}
+
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            //1Задание
+            DerivedClass dClass = new DerivedClass();
+            dClass.Method();
+            IInterface @dClass1 = new DerivedClass();
+            dClass1.Method();
+            2-Задание
+            MyClass myClass = new MyClass();
+            myClass.GetPi();
+            myClass.GetInteger();
+            myClass.GetSquare('x');
+            myClass.GetSqurt('x');
+            //3-Задание
+            DerivedClass1 dClass = new DerivedClass1();
+            dClass.Method1();
+            dClass.Method2();
+            dClass.Method3();
+            //4-Задание
+            Person person = new Person();
+            Person1 person1 = new Person1();
+            person1.ShowTalk1();
+            person.Thoungths();
+            person1.ShowTalk2();
+            Console.ReadKey();
+        }
+    }
+}
