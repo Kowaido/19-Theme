@@ -1,0 +1,53 @@
+{
+    interface IComparable<in T>
+    {
+    }
+}
+
+{
+    class Person : IComparable<Person>
+    {
+        public string Name { get; set; }
+        public int Age { get; set;}
+
+        public Person()
+        {
+
+        }
+
+        public Person(string name, int age)
+        {
+            Name = name;
+            Age = age;
+        }
+
+        public int ComparerTo(Person obj)
+        {
+            return Name.CompareTo(obj.Name);
+        }
+    }
+}
+
+{
+    class Program
+    {
+        static void Main(string[] args)
+        {
+            List<Person> people = new List<Person>();
+            people.Add(new Person("Артём", 20));
+            people.Add(new Person("Владислав", 19));
+            people.Add(new Person("Виктор", 25));
+            people.Add(new Person("Никита", 35));
+            people.Add(new Person("Григорий", 31));
+            for (int i = 0; i < people.Count; i++)
+            {
+                Person item = people[i];
+                foreach (var ite in people)
+                {
+                    Console.WriteLine($"До сортировки {ite.Name}");
+                }
+            }
+            Console.ReadKey();
+        }
+    }
+}
