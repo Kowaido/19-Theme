@@ -1,27 +1,68 @@
 {
-    interface IComparable<in T>
+    /// <summary>
+    /// Класс Book реализующий интерфейс сравнения
+    /// </summary>
+    class Book: IComparable<Book>
     {
+        /// <summary>
+        /// Свойство BookName
+        /// </summary>
+        public string BookName { get; set; }
+        /// <summary>
+        /// Свойство Price
+        /// </summary>
+        public int Price { get; set; }
+
+        /// <summary>
+        /// Метод CompareTo сравнение книг для сортировки
+        /// </summary>
+        /// <param name="item"></param>
+        /// <returns>-1,0,1</returns>
+        public int CompareTo(Book item)
+        {
+            return string.Compare(BookName, item.BookName);
+        }
     }
 }
 
+
 {
+    /// <summary>
+    /// Класс реализующий интерфейс IComparable
+    /// </summary>
     class Person : IComparable<Person>
     {
+        /// <summary>
+        /// Свойство Name
+        /// </summary>
         public string Name { get; set; }
-        public int Age { get; set;}
-
+        /// <summary>
+        /// Свойство Age
+        /// </summary>
+        public int Age { get; set; }
+        /// <summary>
+        /// Конструктор без параметров
+        /// </summary>
         public Person()
         {
 
         }
-
+        /// <summary>
+        /// Конструктор с двумя параметрами
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="age"></param>
         public Person(string name, int age)
         {
             Name = name;
             Age = age;
         }
-
-        public int ComparerTo(Person obj)
+        /// <summary>
+        /// Метод для сравнения объектов Name
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        public int CompareTo(Person obj)
         {
             return Name.CompareTo(obj.Name);
         }
@@ -33,19 +74,52 @@
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("Мы здесь можем увидеть, как выглядит список до сортировки и после");
+            //1-Задание
+            List<Book> books = new List<Book>();
+            books.Add(new Book() {BookName = "Аладин", Price = 235});
+            books.Add(new Book() {BookName = "Изумрудный город", Price = 1020});
+            books.Add(new Book() {BookName = "Гарри Потер", Price = 576 });
+            books.Add(new Book() {BookName = "Кот в сапогах", Price = 325 });
+            books.Add(new Book() {BookName = "Книга по изучению C# 16.4", Price = 340 });
+            Console.WriteLine("До сортировки: ");
+            for (int i = 0; i < books.Count; i++)
+            {
+                Book book = books[i];
+                Console.WriteLine("Название: {0}, Цена: {1}",book.BookName, book.Price);
+            }
+            Console.WriteLine();
+            Console.WriteLine("После сортировки: ");
+            books.Sort();
+            for (int i = 0; i < books.Count; i++)
+            {
+                Book book = books[i];
+                Console.WriteLine("Название: {0}, Цена: {1}", book.BookName, book.Price);
+            }
+
+            //2-Задание
             List<Person> people = new List<Person>();
             people.Add(new Person("Артём", 20));
             people.Add(new Person("Владислав", 19));
             people.Add(new Person("Виктор", 25));
             people.Add(new Person("Никита", 35));
+            people.Add(new Person("Владимир", 30));
+            people.Add(new Person("Михаил", 12));
             people.Add(new Person("Григорий", 31));
+            Console.WriteLine($"До сортировки: ");
             for (int i = 0; i < people.Count; i++)
             {
                 Person item = people[i];
-                foreach (var ite in people)
-                {
-                    Console.WriteLine($"До сортировки {ite.Name}");
-                }
+                Console.WriteLine(item.Name);
+            }
+            Console.WriteLine();
+
+            Console.WriteLine($"После сортировки: ");
+            people.Sort();
+            for (int i = 0; i < people.Count; i++)
+            {
+                Person item = people[i];
+                Console.WriteLine(item.Name);
             }
             Console.ReadKey();
         }
