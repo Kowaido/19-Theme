@@ -70,6 +70,379 @@
 }
 
 {
+    /// <summary>
+    /// Класс AuthoStore с интерфейсом IComparable
+    /// </summary>
+    class AuthoStore : IComparable<AuthoStore>
+    {
+        /// <summary>
+        /// Свойство Inditifaction
+        /// </summary>
+        public int Inditifaction { get; set; }
+        
+        /// <summary>
+        /// Свойство Marka
+        /// </summary>
+        public string Marka { get; set; }
+        
+        /// <summary>
+        /// Свойство MaxSpeed
+        /// </summary>
+        public int MaxSpeed { get; set;}
+        
+        /// <summary>
+        /// Свойство Price
+        /// </summary>
+        public double Price { get; set; }
+        
+        /// <summary>
+        /// Свойство Discount
+        /// </summary>
+        public double Discount { get; set; }
+        
+        /// <summary>
+        /// Конструктор без параметров
+        /// </summary>
+        public AuthoStore()
+        {
+
+        }
+
+        /// <summary>
+        /// Конструктор с пятью параметрами
+        /// </summary>
+        /// <param name="inditifaction"></param>
+        /// <param name="marka"></param>
+        /// <param name="maxspeed"></param>
+        /// <param name="price"></param>
+        /// <param name="discount"></param>
+        public AuthoStore(int inditifaction, string marka, int maxspeed, double price, double discount)
+        {
+            Inditifaction = inditifaction;
+            Marka = marka;
+            MaxSpeed = maxspeed;
+            Price = price;
+            Discount = discount;
+        }
+
+        /// <summary>
+        /// Метод для сравнения
+        /// </summary>
+        /// <param name="obj"></param>
+        /// <returns></returns>
+        public int CompareTo(AuthoStore obj)
+        {
+            double Totalprice = Price * (1 - Discount / 100);
+            double otherprice = obj.Price * (1 - obj.Discount / 100);
+            if (Totalprice < otherprice)
+            {
+                return -1;
+            }
+            else if (Totalprice > otherprice)
+            {
+                return 0;
+            }
+            else
+            {
+                return 1;
+            }
+
+        }
+        /// <summary>
+        /// Переопределённый метод для вывода информации
+        /// </summary>
+        /// <returns></returns>
+        public override string ToString()
+        {
+            return $"{Inditifaction}, {Marka}, Максимальная скорость: {MaxSpeed}, Цена: {Price}, Скидка: {Discount}";
+        }
+    }
+}
+
+{
+    /// <summary>
+    /// Абстрактный класс Figures
+    /// </summary>
+    abstract class Figures
+    {
+        /// <summary>
+        /// Свойство Name
+        /// </summary>
+        public string Name { get; set; }
+        /// <summary>
+        /// Конструктор без параметров
+        /// </summary>
+        public Figures()
+        {
+
+        }
+        /// <summary>
+        /// Конструктор с параметрами
+        /// </summary>
+        /// <param name="name"></param>
+        public Figures(string name)
+        {
+            Name = name;
+        }
+        /// <summary>
+        /// Абстрактный метод Perimetr
+        /// </summary>
+        /// <returns></returns>
+        public abstract double Perimetr();
+        /// <summary>
+        /// Абстрактный метод Square
+        /// </summary>
+        /// <returns></returns>
+        public abstract double Square();
+        /// <summary>
+        /// Виртуальный метод для вывода информации по фигуре
+        /// </summary>
+        public virtual void Info()
+        {
+            Console.WriteLine($"Название - {Name}");
+        }
+
+        /// <summary>
+        /// Метод для сравнения
+        /// </summary>
+        /// <param name="figures"></param>
+        /// <returns></returns>
+        public int CompareTo(Figures figures)
+        {
+            return figures.Square().CompareTo(figures.Square());
+        }
+    }
+}
+
+{
+    /// <summary>
+    /// Класс Rectangle наследующийся от абстрактного класса Figures
+    /// </summary>
+    class Rectangle : Figures
+    {
+        /// <summary>
+        /// Свойство P
+        /// </summary>
+        public double P { get; set; }
+        /// <summary>
+        /// Свойство S
+        /// </summary>
+        public double S { get; set; }
+        /// <summary>
+        /// Свойство Side1
+        /// </summary>
+        public double Side1 { get; set; }
+        /// <summary>
+        /// Свойство Side2
+        /// </summary>
+        public double Side2 { get; set;}
+        /// <summary>
+        /// Конструктор без параметров
+        /// </summary>
+        public Rectangle()
+        {
+
+        }
+
+        /// <summary>
+        /// Конструктор с четырьями параметрами, и одним из базового класса
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="p"></param>
+        /// <param name="s"></param>
+        /// <param name="side1"></param>
+        /// <param name="side2"></param>
+        public Rectangle(string name, double p, double s, double side1, double side2)
+          :base(name)
+        {
+            P = p;
+            S = s;
+            Side1 = side1;
+            Side2 = side2;
+        }
+        /// <summary>
+        /// Переопределённый метод для вывода информации
+        /// </summary>
+        public override void Info()
+        {
+            base.Info();
+            Console.WriteLine($"Периметр - {Perimetr()}, Площадь - {Square()}");
+        }
+
+        /// <summary>
+        /// Переопределённый метод для подсчёта периметра
+        /// </summary>
+        /// <returns></returns>
+        public override double Perimetr()
+        {
+            Console.WriteLine(P = Math.Abs(2 * (Side1 + Side2)));
+            return P = Math.Abs(2 * (Side1 + Side2));
+        }
+
+        /// <summary>
+        /// Переопределённый метод для подсчёта площади
+        /// </summary>
+        /// <returns></returns>
+        public override double Square()
+        {
+            Console.WriteLine(S = Side1 * Side2);
+            return S = Side1 * Side2;
+        }
+    }
+}
+
+{
+    /// <summary>
+    /// Класс Triagle наследующийся от класса Figures
+    /// </summary>
+    class Triagle : Figures
+    {
+        /// <summary>
+        /// Свойство Side1
+        /// </summary>
+        public double Side1 { get; set;}
+        /// <summary>
+        /// Свойство Side2
+        /// </summary>
+        public double Side2 { get; set; }
+        /// <summary>
+        /// Свойство Side3
+        /// </summary>
+        public double Side3 { get; set; }
+        /// <summary>
+        /// Конструктор без параметров
+        /// </summary>
+        public Triagle()
+        {
+
+        }
+        /// <summary>
+        /// Конструктор с тремя параметрами, и одним из базового класса
+        /// </summary>
+        public Triagle(string name, double side1, double side2, double side3)
+          :base(name)
+        {
+            Side1 = side1;
+            Side2 = side2;
+            Side3 = side3;
+        }
+
+        /// <summary>
+        /// Переопределённый метод для вывода информации о фигуре
+        /// </summary>
+        public override void Info()
+        {
+            base.Info();
+            Console.WriteLine($"Периметр - {Perimetr()}, Площадь - {Square()}");
+        }
+
+        /// <summary>
+        /// Переопределённый метод для подсчёта периметра
+        /// </summary>
+        /// <returns></returns>
+        public override double Perimetr()
+        {
+            Console.WriteLine(Side1 + Side2 + Side3);
+            return Side1 + Side2 + Side3;
+        }
+
+        /// <summary>
+        /// Переопределённый метод для подсчёта площади
+        /// </summary>
+        /// <returns></returns>
+        public override double Square()
+        {
+            double p = (Side1 + Side2 + Side3) / 2;
+            Console.WriteLine(Math.Sqrt(p * (p - Side1) * (p - Side2) * (p - Side3)));
+            return Math.Sqrt(p * (p - Side1) * (p - Side2) * (p - Side3));
+        }
+    }
+}
+
+{
+    /// <summary>
+    /// Класс Круг наследующийся от абстрактного класса Figures
+    /// </summary>
+    class Circle : Figures
+    {
+        /// <summary>
+        /// Свойство X
+        /// </summary>
+        public double X { get; set; }
+        /// <summary>
+        /// Свойство Y
+        /// </summary>
+        public double Y { get; set; }
+        /// <summary>
+        /// Свойство C
+        /// </summary>
+        public double C { get; set; }
+        /// <summary>
+        /// Свойство R
+        /// </summary>
+        public double R { get; set; }
+        /// <summary>
+        /// Свойство S
+        /// </summary>
+        public double S { get; set; }
+        /// <summary>
+        /// Конструктор без параметров
+        /// </summary>
+        public Circle()
+        {
+
+        }
+        /// <summary>
+        /// Конструктор с пятью параметрами данного класса, и одним базвого
+        /// </summary>
+        /// <param name="name"></param>
+        /// <param name="x"></param>
+        /// <param name="y"></param>
+        /// <param name="c"></param>
+        /// <param name="r"></param>
+        /// <param name="s"></param>
+        public Circle(string name, double x, double y, double c, double r, double s)
+            :base(name)
+        {
+            X = x;
+            Y = y;
+            C = c;
+            R = r;
+            S = s;
+        }
+        /// <summary>
+        /// Переопределённый метод вывода информации о фигуре
+        /// </summary>
+        public override void Info()
+        {
+            base.Info();
+            Console.WriteLine($"Периметр - {Perimetr()}, Площадь - {Square()}");
+        }
+        /// <summary>
+        /// Переопределённый метод для подсчёта периметра
+        /// </summary>
+        /// <returns></returns>
+        public override double Perimetr()
+        {
+            Console.WriteLine(C = 2 * Math.PI * R);
+           return C = 2 * Math.PI * R;
+        }
+        /// <summary>
+        /// Переопределённый метод для подсчёта площади
+        /// </summary>
+        /// <returns></returns>
+        public override double Square()
+        {
+            X = R;
+            Y = 1;
+            R = Math.Pow(X, Y * R);
+            Console.WriteLine(S = Math.PI * R);
+            return S = Math.PI * R;
+        }
+    }
+}
+
+{
     class Program
     {
         static void Main(string[] args)
@@ -121,7 +494,213 @@
                 Person item = people[i];
                 Console.WriteLine(item.Name);
             }
+
+            //3-Задание
+            List<AuthoStore> authoStores = new List<AuthoStore>();
+            authoStores.Add(new AuthoStore() {Inditifaction = 1, Marka = "Мерседес", MaxSpeed = 200, Price = 4245, Discount = 25});
+            authoStores.Add(new AuthoStore() {Inditifaction = 2, Marka = "БМВ", MaxSpeed = 236, Price = 3145, Discount = 34 });
+            authoStores.Add(new AuthoStore() {Inditifaction = 3, Marka = "Минивен",MaxSpeed = 350, Price = 5421, Discount = 17});
+            authoStores.Add(new AuthoStore() {Inditifaction = 4, Marka = "Драндуленд", MaxSpeed = 265, Price = 4503, Discount = 19 });
+            Console.WriteLine("До сортировки: ");
+            foreach (AuthoStore autho in authoStores)
+            {
+                Console.WriteLine(autho);
+            }
+
+            authoStores.Sort();
+            Console.WriteLine("После сортировки: ");
+            for (int i = 0; i < authoStores.Count; i++)
+            {
+                AuthoStore autho = authoStores[i];
+                Console.WriteLine($"Марка = {autho.Marka}, Цена: {autho.Price * (1 - autho.Discount / 100)}");
+            }
+
+            //4-Задание
+            Rectangle rectangle = new Rectangle();
+            Triagle triagle = new Triagle();
+            Circle circle = new Circle();
+            bool flag;
+            int i = 0;
+            Console.WriteLine("Введите количество фигур: ");
+            int n = int.Parse(Console.ReadLine());
+            if (n == 3)
+            {
+                Console.WriteLine("Вы указали максимальное число фигур");
+            }
+            else if (n <= 2  n >= 1)
+            {
+                Console.WriteLine($"Фигур {n}");
+            }
+            else if(n < 1)
+            {
+                Console.WriteLine("У вас не одной фигуры: ");
+            }
+            else if(n > 3)
+            {
+                Console.WriteLine("У вас превышено количество фигур: ");
+            }
+
+            Console.WriteLine($"Вы указали {n} фигур");
+            flag = true;
+            while (flag)
+            {
+                Console.WriteLine("Введите фигуру про которую сперва хотите вывести информацию: ");
+                Console.WriteLine("1)Прямоугольник \n2)Треугольник \n3)Круг");
+                string choise = Console.ReadLine();
+                switch (choise)
+                {
+                    case "Прямоугольник":
+                    case "прямоугольник":
+                        Console.WriteLine($"Вы выбрали {choise}");
+                        rectangle.Name = choise;
+                        Console.WriteLine("Введите первую сторону(длину): ");
+                        rectangle.Side1 = double.Parse(Console.ReadLine());
+                        Console.WriteLine("Введите вторую сторону(ширину): ");
+                        rectangle.Side2 = double.Parse(Console.ReadLine());
+                        Console.Write($"Рассчитав периметр фигуры {rectangle.Name} он = ");
+                        rectangle.Perimetr();
+                        Console.Write($"Рассчитав площадь фигуры {rectangle.Name} она = ");
+                        rectangle.Square();
+                        Console.WriteLine("Теперь мы можем увидеть данные фигуры: ");
+                        rectangle.Info();
+                        if (n == 1)
+                        {
+                            Console.WriteLine("Данные выведены, спасибо что попробовали");
+                            break;
+                        }
+
+                        if (n == 2)
+                        {
+                            if (circle.Name == triagle.Name  circle.Name == rectangle.Name  rectangle.Name == triagle.Name  rectangle.Name == circle.Name  triagle.Name == circle.Name  triagle.Name == rectangle.Name)
+                            {
+                                Console.WriteLine("Данные выведены, спасибо что попробовали");
+                            }
+                        }
+
+                        if (i > 3)
+                        {
+                            Console.WriteLine("Вы попробовали указать ещё одну фигуру но здесь имеется ограничитель");
+                            break;
+                        }
+                        Console.WriteLine("Хотите продолжить?");
+                        choise = Console.ReadLine();
+                        if (choise == "Да"  choise == "да")
+                        {
+                            i++;
+                            Console.WriteLine("Вы выбрали продолжить");
+
+                        }
+                        else if (choise == "Нет"  choise == "нет")
+                        {
+                            Console.WriteLine("Вы выбрали завершить");
+                            break;
+                        }
+                        break;
+                    case "Треугольник":
+                    case "треугольник":
+                        Console.WriteLine($"Вы выбрали {choise}");
+                        triagle.Name = choise;
+                        Console.Write("Введите первую сторону: ");
+                        triagle.Side1 = double.Parse(Console.ReadLine());
+                        Console.Write("Введите вторую сторону: ");
+                        triagle.Side2 = double.Parse(Console.ReadLine());
+                        Console.Write("Введите третию сторону");
+                        triagle.Side3 = double.Parse(Console.ReadLine());
+                        Console.Write($"Рассчитав периметр фигуры {triagle.Name} он = ");
+                        triagle.Perimetr();
+                        Console.Write($"Рассчитав площадь фигуры {triagle.Name} она = ");
+                        triagle.Square();
+                        Console.WriteLine("Теперь мы можем увидеть данные фигуры: ");
+                        triagle.Info();
+                        if (n == 1)
+                        {
+                            Console.WriteLine("Данные выведены, спасибо что попробовали");
+                            break;
+                        }
+
+                        if (n == 2)
+                        {
+                            if (circle.Name == triagle.Name  circle.Name == rectangle.Name  rectangle.Name == triagle.Name  rectangle.Name == circle.Name  triagle.Name == circle.Name  triagle.Name == rectangle.Name)
+                            {
+                                Console.WriteLine("Данные выведены, спасибо что попробовали");
+                            }
+                        }
+
+                        if (i > 3)
+                        {
+                            Console.WriteLine("Вы попробовали указать ещё одну фигуру но здесь имеется ограничитель");
+                            break;
+                        }
+                        Console.WriteLine("Хотите продолжить?");
+                        choise = Console.ReadLine();
+                        if (choise == "Да"  choise == "да")
+                        {
+                            i++;
+                            Console.WriteLine("Вы выбрали продолжить");
+                            continue;
+
+                        }
+                        else if (choise == "Нет"  choise == "нет")
+                        {
+                            Console.WriteLine("Вы выбрали завершить");
+                            break;
+                        }
+                        break;
+
+                    case "Круг":
+                    case "круг":
+                        Console.WriteLine($"Вы выбрали {choise}");
+                        circle.Name = choise;
+                        Console.Write("Введите радиус: ");
+                        circle.R = double.Parse(Console.ReadLine());
+                        Console.Write($"Рассчитав периметр фигуры {circle.Name} он = ");
+                        circle.Perimetr();
+                        Console.Write($"Рассчитав площадь фигуры {circle.Name} она = ");
+                        circle.Square();
+                        Console.WriteLine("Теперь мы можем увидеть данные фигуры: ");
+                        circle.Info();
+                        if (n == 1)
+                        {
+                            Console.WriteLine("Данные выведены, спасибо что попробовали");
+                            break;
+                        }
+
+                        if (n == 2)
+                        {
+                            if (circle.Name == triagle.Name  circle.Name == rectangle.Name  rectangle.Name == triagle.Name  rectangle.Name == circle.Name  triagle.Name == circle.Name  triagle.Name == rectangle.Name)
+                            {
+                                Console.WriteLine("Данные выведены, спасибо что попробовали");
+                            }
+                        }
+
+			            if (i > 3)
+                        {
+                            Console.WriteLine("Вы попробовали указать ещё одну фигуру но здесь имеется ограничитель");
+                            break;
+                        }
+                        Console.WriteLine("Хотите продолжить?");
+                        choise = Console.ReadLine();
+                        if (choise == "Да"  choise == "да")
+                        {
+                            i++;
+                            Console.WriteLine("Вы выбрали продолжить");
+                            continue;
+
+                        }
+                        else if (choise == "Нет"  choise == "нет")
+                        {
+                            Console.WriteLine("Вы выбрали завершить");
+                            break;
+                        }
+                        break;
+                }
+                List<Figures> figures = new List<Figures>();
+                figures.Add(circle.Square());
+                figures.Add(triagle.Square());
+                figures.Add(rectangle.Square());
+                flag = false;
             Console.ReadKey();
+            break
         }
     }
 }
